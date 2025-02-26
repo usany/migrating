@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { User } from 'firebase/auth';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Chip from '@mui/material/Chip';
-import staticImage from 'src/assets/blue.png';
+import staticImage from '../../../public/blue.png';
 interface Props {
   userObj: User
   profileUrl: string
@@ -42,7 +42,7 @@ const ChatsBoxes = ({ userObj, profileUrl, displayName, multiple, clock, message
   return (
     <div className='flex p-3'>
       <Avatar>
-        <AvatarImage src={multiple ? staticImage : profileUrl} />
+        <AvatarImage src={multiple ? staticImage.src : profileUrl} />
         <AvatarFallback>{multiple ? "CN" : displayName[0]}</AvatarFallback>
       </Avatar>
       <div className='flex flex-col w-screen'>

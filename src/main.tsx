@@ -22,7 +22,7 @@ if ("serviceWorker" in navigator) {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <APIProvider
-      apiKey={import.meta.env.VITE_MAPS_PLATFORM}
+      apiKey={process.env.VITE_MAPS_PLATFORM}
       onLoad={() => console.log("Maps API has loaded.")}
     >
       <Provider store={store}>

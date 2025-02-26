@@ -35,7 +35,7 @@ import { changeProfileImage } from "src/stateSlices/profileImageSlice";
 import { User } from "firebase/auth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Avatars from "src/pages/core/Avatars";
-import staticImage from "src/assets/blue.png";
+import staticImage from "../public/blue.png";
 import { useSelectors } from "src/hooks/useSelectors";
 import HeaderViews from "src/navigate/HeaderViews";
 
@@ -140,7 +140,7 @@ const Header = ({ userObj }: Props) => {
               <Avatars
                 profile={false}
                 profileColor={"profile-blue"}
-                profileImage={staticImage}
+                profileImage={staticImage.src}
                 fallback={""}
               />
             )}

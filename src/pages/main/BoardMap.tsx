@@ -139,6 +139,7 @@ function BoardMap({ onMarker, onMarkerTrue, onMarkerFalse }: Props) {
             </div>
             <div className="w-full h-[300px]">
               <Map
+              mapId='36046a82a2b41bb4'
                 defaultCenter={{ lat: 59.9156636, lng: 10.7507967 }}
                 defaultZoom={18}
                 gestureHandling={"greedy"}

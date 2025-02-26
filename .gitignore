@@ -26,3 +26,7 @@ dev-dist
 .vercel
 
 *storybook.log
+# ...
+.next
+next-env.d.ts
+dist

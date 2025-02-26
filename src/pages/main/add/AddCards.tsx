@@ -3,7 +3,7 @@ import AddStepTitle from 'src/pages/main/add/AddStepTitle'
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import staticImg from 'src/assets/pwa-512x512.png';
+import staticImg from '../../../public/pwa-512x512.png';
 import { CardHeader, Chip } from '@mui/material';
 import Avatars from 'src/pages/core/Avatars';
 import { useSelector } from 'react-redux';
@@ -57,7 +57,7 @@ const AddCards = ({ borrow, userObj, addSteps, item, fromTo, locationState, disp
                             <div className='pt-1'>
                                 <CardMedia
                                     sx={{ height: 140 }}
-                                    image={staticImg}
+                                    image={staticImg.src}
                                 />
                             </div>
                         }

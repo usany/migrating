@@ -28,7 +28,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import staticMail from "src/assets/signMail.svg";
+import staticMail from "../../../public/signMail.svg";
 import AuthDialogs from "./AuthDialogs.tsx";
 // import storeSetDoc from "../../../components/setDocUser.ts";
 
@@ -156,7 +156,7 @@ const AuthForm = ({ signIn }) => {
           <div className="flex flex-col justify-center p-3">
             <Button
               variant="outlined"
-              startIcon={<img src={staticMail} className="w-[20px]" />}
+              startIcon={<img src={staticMail.src} className="w-[20px]" />}
               form={signIn ? "auth" : "signUp"}
               type="submit"
             >

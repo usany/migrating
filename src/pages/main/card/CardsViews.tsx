@@ -17,9 +17,9 @@ import { Link } from "react-router-dom";
 import Btn from "src/pages/Btn";
 import Specifics from "src/pages/core/specifics/Specifics";
 import Chip from "@mui/material/Chip";
-import staticImg from "src/assets/pwa-512x512.png";
-import staticImageJ from "src/assets/blue-01.png";
-import staticImageC from "src/assets/screen-01.png";
+import staticImg from "../../../public/pwa-512x512.png";
+import staticImageJ from "../../../public/blue-01.png";
+import staticImageC from "../../../public/screen-01.png";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -75,11 +75,11 @@ const CardsViews = ({ msgObj, isOwner, userObj, num, points }: Props) => {
   const profileImage = useSelector((state) => state.profileImage.value);
   useEffect(() => {
     if (msgObj.text.count === "중도") {
-      setStaticImage(staticImageJ);
+      setStaticImage(staticImageJ.src);
     } else if (msgObj.text.count === "청운") {
-      setStaticImage(staticImageC);
+      setStaticImage(staticImageC.src);
     } else {
-      setStaticImage(staticImg);
+      setStaticImage(staticImg.src);
     }
   }, [msgObj]);
   const profileUrl = msgObj?.creatorUrl;
