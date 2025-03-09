@@ -36,31 +36,26 @@ function CardsStacks({ userObj }: Props) {
   const [longPressCard, setLongPressCard] = useState(null);
   const [onLongPress, setOnLongPress] = useState(0);
 
-  useEffect(() => {
-    const requestPermission = async () => {
-      try {
-        const token = await getToken(messaging, {
-          vapidKey:
-            "BC6ZRwx8Ke48uprRA17AlLOqJ8HCMIwIVYLy32evgnACjpf0aH5yxHhkvEe5D8I73kjn69E2jF-bnMLeRbbzRRE",
-        });
-        if (token) {
-          console.log("Token generated:", token);
-          // Send this token to your server to store it for later use
-          // webSocket.on('messagingToken', token)
-          // return (
-          //     webSocket.off('messagingToken', token)
-          // )
-          const myDoc = doc(dbservice, `members/${userObj.uid}`);
-          updateDoc(myDoc, { messagingToken: token });
-        } else {
-          console.log("No registration token available.");
-        }
-      } catch (err) {
-        console.error("Error getting token:", err);
-      }
-    };
-    requestPermission();
-  }, []);
+  // useEffect(() => {
+  //   const requestPermission = async () => {
+  //     try {
+  //       const token = await getToken(messaging, {
+  //         vapidKey:
+  //           "BC6ZRwx8Ke48uprRA17AlLOqJ8HCMIwIVYLy32evgnACjpf0aH5yxHhkvEe5D8I73kjn69E2jF-bnMLeRbbzRRE",
+  //       });
+  //       if (token) {
+  //         console.log("Token generated:", token);
+  //         const myDoc = doc(dbservice, `members/${userObj.uid}`);
+  //         updateDoc(myDoc, { messagingToken: token });
+  //       } else {
+  //         console.log("No registration token available.");
+  //       }
+  //     } catch (err) {
+  //       console.error("Error getting token:", err);
+  //     }
+  //   };
+  //   requestPermission();
+  // }, []);
 
   useEffect(() => {
     onSnapshot(
@@ -114,12 +109,13 @@ function CardsStacks({ userObj }: Props) {
           ) : (
             <>
               <div className="flex flex-wrap justify-around gap-5">
-                {messages.map((msg) => {
+                {messages.map((msg, index) => {
                   const isOwner = msg.creatorId === userObj.uid;
                   if (msg.round !== 5) {
                     if (msg.creatorId === userObj.uid) {
                       return (
                         <ClickAwayListener
+                          key={index}
                           onClickAway={() => {
                             if (longPressCard === msg.id) {
                               setOnLongPress(0);

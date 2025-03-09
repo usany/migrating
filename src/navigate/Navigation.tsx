@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { auth, dbservice } from "src/baseApi/serverbase";
 import Modes from "src/Modes";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
@@ -28,7 +28,16 @@ import {
   SearchCheck,
 } from "lucide-react";
 import { changeBottomNavigation } from "src/stateSlices/bottomNavigationSlice";
-import { AlarmCheck, AlertCircle, DoorOpen, Presentation, Siren, UserCheck, UserRound } from "lucide-react";
+import {
+  AlarmCheck,
+  AlertCircle,
+  DoorOpen,
+  Presentation,
+  Siren,
+  UserCheck,
+  UserRound,
+} from "lucide-react";
+import Link from "next/link";
 
 // const StyledBox = styled('div')(({ theme }) => ({
 //   backgroundColor: '#fff',
@@ -139,8 +148,10 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
                 <h1 className="text-2xl	px-5 pt-5">
                   <div className="flex">
                     <Link
-                      to="/profile"
-                      state={{ element: element }}
+                      href={{
+                        pathname: "/profile",
+                        query: { element: element },
+                      }}
                       onClick={() => checkbox()}
                     >
                       <div className="flex px-3">
@@ -152,7 +163,12 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
                 </h1>
                 <h1 className="text-2xl	px-5 pt-3">
                   <div className="flex">
-                    <Link to="/ranking" onClick={() => checkbox()}>
+                    <Link
+                      href={{
+                        pathname: "/ranking",
+                      }}
+                      onClick={() => checkbox()}
+                    >
                       {/* 유저 랭킹 */}
                       <div className="flex px-3">
                         <>
@@ -164,13 +180,15 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
                   </div>
                 </h1>
                 <h1 className="text-2xl px-5 pt-3">
-                  <div className='flex'>
+                  <div className="flex">
                     <span className="pt-1 px-3">
                       <MessagesSquare />
                     </span>
                     <Link
-                      to="/piazza"
-                      state={{ multiple: true }}
+                      href={{
+                        pathname: "/piazza",
+                        query: { multiple: true },
+                      }}
                       onClick={() => checkbox()}
                     >
                       단체 대화방
@@ -181,7 +199,12 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
                   <span className="px-3">
                     <Siren />
                   </span>
-                  <Link to="/contact" onClick={() => checkbox()}>
+                  <Link
+                    href={{
+                      pathname: "/contact",
+                    }}
+                    onClick={() => checkbox()}
+                  >
                     신고하기
                   </Link>
                 </h1>
@@ -194,7 +217,9 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
                     <DoorOpen />
                   </span>
                   <Link
-                    to="/"
+                    href={{
+                      pathname: "/",
+                    }}
                     onClick={() => {
                       logOut();
                     }}
@@ -244,13 +269,13 @@ function Navigation({ userObj, sideNavigation, handleSideNavigation }: Props) {
           </div>
         )}
 
-      <AlarmCheck />
-      <AlertCircle />
-      <Siren />
-      <Presentation />
-      <DoorOpen />
-      <UserRound />
-      <UserCheck />
+        <AlarmCheck />
+        <AlertCircle />
+        <Siren />
+        <Presentation />
+        <DoorOpen />
+        <UserRound />
+        <UserCheck />
       </nav>
     </SwipeableDrawer>
   );

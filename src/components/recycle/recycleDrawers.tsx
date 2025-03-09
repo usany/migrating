@@ -1,16 +1,32 @@
-import { useState, useEffect, useReducer } from 'react'
-import Card from '@mui/material/Card';
-import { CardActionArea, CardActions } from '@mui/material';
-import { Link } from 'react-router-dom'
-import { collection, query, where, orderBy, addDoc, getDoc, getDocs, doc, onSnapshot, updateDoc, setDoc } from 'firebase/firestore';
-import { auth, onSocialClick, dbservice, storage } from 'src/baseApi/serverbase'
-import { Label, Pie, PieChart } from "recharts"
+import { useState, useEffect, useReducer } from "react";
+import Card from "@mui/material/Card";
+import { CardActionArea, CardActions } from "@mui/material";
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  addDoc,
+  getDoc,
+  getDocs,
+  doc,
+  onSnapshot,
+  updateDoc,
+  setDoc,
+} from "firebase/firestore";
+import {
+  auth,
+  onSocialClick,
+  dbservice,
+  storage,
+} from "src/baseApi/serverbase";
+import { Label, Pie, PieChart } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 import {
   Drawer,
   DrawerClose,
@@ -20,11 +36,16 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import Points from 'src/pages/search/Points'
+} from "@/components/ui/drawer";
+import { ScrollArea } from "@/components/ui/scroll-area";
+// import Points from 'src/pages/search/Points'
 const Drawers = () => {
-  const [cards, setCards] = useState({point: null, done: [], borrowDone: [], lendDone: [] })
+  const [cards, setCards] = useState({
+    point: null,
+    done: [],
+    borrowDone: [],
+    lendDone: [],
+  });
   // const [allies, setAllies] = useState({
   //   followers: {
   //     number: null,
@@ -63,43 +84,41 @@ const Drawers = () => {
     //   fill: 'red'},
     // { action: 'lend', number: cards.lendDone.length,
     //   fill: 'blue'},
-    { action: 'borrow', number: cards.borrowDone.length,
-      fill: 'red'},
-    { action: 'lend', number: cards.lendDone.length,
-      fill: 'blue'},
-  ]
+    { action: "borrow", number: cards.borrowDone.length, fill: "red" },
+    { action: "lend", number: cards.lendDone.length, fill: "blue" },
+  ];
   const labels = {
     number: {
-      label: 'total',
+      label: "total",
     },
     borrow: {
-      label: 'borrow',
-      color: '#2563eb',
+      label: "borrow",
+      color: "#2563eb",
     },
     lend: {
-      label: 'lend',
-      color: '#60a5fa',
+      label: "lend",
+      color: "#60a5fa",
     },
-  } satisfies ChartConfig
-  const totalNumber = actions.reduce((acc, curr) => acc + curr.number, 0)
+  } satisfies ChartConfig;
+  const totalNumber = actions.reduce((acc, curr) => acc + curr.number, 0);
 
   return (
     <Drawer>
-  <DrawerTrigger>Open</DrawerTrigger>
-  <DrawerContent className='dark:bg-black'>
-    <DrawerHeader>
-      <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-      <DrawerDescription>This action cannot be undone.</DrawerDescription>
-    </DrawerHeader>
-    <DrawerFooter>
-      {/* <button>Submit</button> */}
-      {/* <DrawerClose>
+      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerContent className="dark:bg-black">
+        <DrawerHeader>
+          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+          <DrawerDescription>This action cannot be undone.</DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          {/* <button>Submit</button> */}
+          {/* <DrawerClose>
         <button>Cancel</button>
       </DrawerClose> */}
-    </DrawerFooter>
-  </DrawerContent>
-</Drawer>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
-}
+};
 
-export default Drawers
+export default Drawers;

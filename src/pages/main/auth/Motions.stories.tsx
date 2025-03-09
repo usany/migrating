@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 
-import Motions from './Motions';
+import Motions from "../../../app/mainComponents/Motions";
 
 const meta = {
   component: Motions,

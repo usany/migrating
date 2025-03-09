@@ -1,7 +1,7 @@
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Card from "@mui/material/Card";
 import { CardActionArea, CardActions, ClickAwayListener } from "@mui/material";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { User } from "firebase/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Chip from "@mui/material/Chip";
@@ -25,6 +25,7 @@ import {
 } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { changePiazzaSwitch } from "src/stateSlices/piazzaSwitchSlice";
+import Link from "next/link";
 
 interface Props {
   userObj: User;
@@ -101,13 +102,15 @@ const Chats = ({
             <CardActionArea>
               {!onLongPress ? (
                 <Link
-                  to="/piazza"
-                  state={{
-                    conversation: conversation,
-                    displayName: displayName,
-                    userUid: userObj.uid,
-                    chattingUid: chattingUid,
-                    multiple: multiple,
+                  href={{
+                    pathname: "/piazza",
+                    query: {
+                      conversation: conversation,
+                      displayName: displayName,
+                      userUid: userObj.uid,
+                      chattingUid: chattingUid,
+                      multiple: multiple,
+                    },
                   }}
                 >
                   <ChatsBoxes

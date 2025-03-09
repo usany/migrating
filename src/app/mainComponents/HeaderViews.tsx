@@ -19,7 +19,6 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import Divider from "@mui/material/Divider";
-// import { Link } from "react-router-dom";
 import { CreditCard } from "lucide-react";
 import { MessageCircle, Minimize2, Maximize2 } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";

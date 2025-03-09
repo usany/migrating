@@ -44,8 +44,8 @@ function PiazzaForm({
   const profileColor = useSelector((state) => state.profileColor.value);
   const profileUrl = useSelector((state) => state.profileUrl.value);
   const dispatch = useDispatch();
-  const { state } = useLocation();
-  const conversation = state?.conversation;
+  // const { state } = useLocation();
+  // const conversation = state?.conversation;
 
   const onSendSubmitHandler = async (event) => {
     event.preventDefault();
@@ -57,11 +57,11 @@ function PiazzaForm({
     let toUserRef;
     let toUser;
     let messagingToken;
-    if (state.chattingUid) {
-      toUserRef = doc(dbservice, `members/${state.chattingUid}`);
-      toUser = await getDoc(toUserRef);
-      messagingToken = toUser.data()?.messagingToken;
-    }
+    // if (state.chattingUid) {
+    //   toUserRef = doc(dbservice, `members/${state.chattingUid}`);
+    //   toUser = await getDoc(toUserRef);
+    //   messagingToken = toUser.data()?.messagingToken;
+    // }
 
     const sendData = {
       msg: message,

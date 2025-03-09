@@ -24,7 +24,6 @@ import {
   updateDoc,
   limit,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
 import { webSocket, onClick } from "src/webSocket.tsx";
 import { useSelector, useDispatch } from "react-redux";
 import { User } from "firebase/auth";
@@ -59,7 +58,7 @@ interface Props {
 }
 
 const ChattingDrawers = ({ conversation, displayName }: Props) => {
-  console.log(conversation);
+  // console.log(conversation);
   return (
     <>
       <Drawer>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 // import Lottie from "react-lottie";
 import Lottie from "lottie-react";
-import rain from "../assets/Animation.json";
+import rain from "src/assets/Animation.json";
 
 function Lotties() {
   // const defaultOptions = {

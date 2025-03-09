@@ -4,7 +4,8 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
-import Lotties from "src/lottiesAnimation/Lotties";
+import Lotties from "src/app/mainComponents/Lotties";
+// import { useApp } from "./useApp";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +23,26 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  if (typeof window !== undefined) {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/firebase-messaging-sw.js")
+        .then((registration) => {
+          console.log(
+            "Service Worker registered with scope:",
+            registration.scope
+          );
+        })
+        .catch((error) => {
+          console.error("Service Worker registration failed:", error);
+        });
+    }
+  }
   return (
     <StoreProvider>
       <html lang="en">

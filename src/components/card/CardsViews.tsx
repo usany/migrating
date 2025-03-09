@@ -13,7 +13,6 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea, CardActions, ClickAwayListener } from "@mui/material";
-import { Link } from "react-router-dom";
 import Btn from "src/pages/Btn";
 import Specifics from "src/pages/core/specifics/Specifics";
 import Chip from "@mui/material/Chip";

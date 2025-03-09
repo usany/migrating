@@ -7,37 +7,18 @@ import {
   Suspense,
   lazy,
 } from "react";
-import WeatherView from "src/navigate/WeatherView";
-import Navigation from "src/navigate/Navigation";
-import Points from "src/pages/search/Points";
-import Avatar from "@mui/material/Avatar";
-import ToggleTabs from "src/pages/main/ToggleTabs";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, dbservice } from "src/baseApi/serverbase";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
-import Divider from "@mui/material/Divider";
-import { Link } from "react-router-dom";
-import { CreditCard } from "lucide-react";
-import { MessageCircle, Minimize2, Maximize2 } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  cardAccordionReducer,
-  change,
-} from "src/stateSlices/cardAccordionSlice";
-import { changeBottomNavigation } from "src/stateSlices/bottomNavigationSlice";
-import { changeMessageAccordion } from "src/stateSlices/messageAccordionSlice";
 import { changeProfileUrl } from "src/stateSlices/profileUrlSlice";
 import { changeProfileColor } from "src/stateSlices/profileColorSlice";
 import { changeProfileImage } from "src/stateSlices/profileImageSlice";
 import { User } from "firebase/auth";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Avatars from "src/pages/core/Avatars";
 import staticImage from "src/assets/blue.png";
 import { useSelectors } from "src/lib/hooks/useSelectors";
-import HeaderViews from "src/navigate/HeaderViews";
+import HeaderViews from "src/app/mainComponents/HeaderViews";
 
 // const Puller = styled('div')(({ theme }) => ({
 //     width: 30,
@@ -57,10 +38,6 @@ interface Props {
 }
 
 const Header = ({ userObj }: Props) => {
-  const bottomNavigation = useSelectors(
-    (state) => state.bottomNavigation.value
-  );
-  // const profileUrl = useSelector(state => state.profileUrl.value)
   const profileColor = useSelector((state) => state.profileColor.value);
   const profileImage = useSelector((state) => state.profileImage.value);
   const [sideNavigation, setSideNavigation] = useState(false);

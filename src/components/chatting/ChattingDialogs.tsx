@@ -1,42 +1,50 @@
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom'
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import Button from "@mui/material/Button";
+import Link from "next/link";
 
-const ChattingDialogs = ({ selectUser, user, handleClose }:
-    {
-        selectUser: boolean,
-        user: {displayName: string} | null,
-        handleClose: () => void,
-    }
-) => {
+const ChattingDialogs = ({
+  selectUser,
+  user,
+  handleClose,
+}: {
+  selectUser: boolean;
+  user: { displayName: string } | null;
+  handleClose: () => void;
+}) => {
+  return (
+    <Dialog open={selectUser} onClose={handleClose}>
+      <DialogContent>
+        <div>{user?.displayName}</div>
+      </DialogContent>
+      <DialogActions>
+        <Link
+          href={{
+            pathname: "/profile",
+            query: { element: user },
+          }}
+        >
+          <Button
+            variant="outlined"
+            onClick={() => {
+              handleClose();
+            }}
+          >
+            프로필 확인
+          </Button>
+        </Link>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            handleClose();
+          }}
+        >
+          닫기
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
-    return (
-        <Dialog open={selectUser} onClose={handleClose}>
-            <DialogContent>
-                <div>
-                    {user?.displayName}
-                </div>
-            </DialogContent>
-            <DialogActions>
-            <Link to='/profile'
-            state={{element: user}}
-            >
-                <Button variant='outlined' onClick={() => {
-                    handleClose()
-                }}>
-                        프로필 확인
-                </Button>
-            </Link>
-            <Button variant='outlined' onClick={() => {
-                handleClose()
-            }}>
-                닫기
-            </Button>
-            </DialogActions>
-        </Dialog>
-    )
-}
-
-export default ChattingDialogs
+export default ChattingDialogs;

@@ -22,7 +22,7 @@ import {
   updateDoc,
   limit,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { webSocket, onClick } from "src/webSocket.tsx";
 import { User } from "firebase/auth";
 import ChattingStacks from "../../pages/main/chatting/ChattingStacks";

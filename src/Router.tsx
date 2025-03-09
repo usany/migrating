@@ -19,7 +19,7 @@ import {
 // import Chatting from 'src/pages/Chatting'
 // import Chats from 'src/pages/Chats'
 import Loadings from "src/pages/core/loadings/Loadings";
-import Header from "src/navigate/Header";
+import Header from "src/app/Header";
 import Navigations from "src/navigate/Navigations";
 import { User } from "firebase/auth";
 import { changeBottomNavigation } from "src/stateSlices/bottomNavigationSlice";
@@ -30,8 +30,8 @@ interface Props {
   userObj: User | null;
 }
 
-const divr = ({ userObj }: Props) => {
-  const Home = lazy(() => import("src/pages/main/Home"));
+const Router = ({ userObj }: Props) => {
+  const Home = lazy(() => import("src/app/mainComponents/Home"));
   const Profile = lazy(() => import("src/pages/profile/Profile"));
   const Ranking = lazy(() => import("src/pages/search/Ranking"));
   // const Specific = lazy(() => import("src/pages/Specific"))

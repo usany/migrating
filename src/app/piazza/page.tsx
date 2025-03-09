@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useEffect, useState, useMemo, lazy } from "react";
 import PiazzaScreen from "src/pages/piazza/piazzaScreen/PiazzaScreen";
 import PiazzaForm from "src/pages/piazza/piazzaForm/PiazzaForm";
@@ -6,31 +8,32 @@ import { User } from "firebase/auth";
 import { changeBottomNavigation } from "src/stateSlices/bottomNavigationSlice";
 import { Link, useLocation } from "react-router-dom";
 import PiazzaTitle from "src/pages/piazza/piazzaTitle/PiazzaTitle";
+import Header from "../Header";
 
 interface Props {
   userObj: User;
 }
 function Piazza({ userObj }: Props) {
+  console.log(userObj);
   const [messages, setMessages] = useState("");
   const [messagesList, setMessagesList] = useState<[]>([]);
   const dispatch = useDispatch();
-  const { state } = useLocation();
+  // const { state } = useLocation();
   const [multiple, setMultiple] = useState(true);
-
-  useEffect(() => {
-    if (state?.multiple !== undefined) {
-      setMultiple(state?.multiple);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (state?.multiple !== undefined) {
+  //     setMultiple(state?.multiple);
+  //   }
+  // }, []);
 
   useEffect(() => {
     dispatch(changeBottomNavigation(5));
   });
-
-  const displayName = state?.displayName;
+  // const displayName = state?.displayName;
   return (
     <>
-      <PiazzaTitle multiple={multiple} displayName={displayName} />
+      <Header userObj={userObj} />
+      <PiazzaTitle multiple={multiple} displayName={""} />
       <PiazzaScreen
         userObj={userObj}
         multiple={multiple}

@@ -230,6 +230,7 @@ const ChattingStacks = ({
           }
           return (
             <Chats
+              key={index}
               userObj={userObj}
               profileUrl={profileUrl}
               conversation={element}
